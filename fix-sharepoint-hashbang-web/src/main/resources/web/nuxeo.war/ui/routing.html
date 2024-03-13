@@ -24,7 +24,15 @@
 
     // Routes
     page('*', scrollToTop, (ctx, next) => {
-      next();
+      // remove partially encoded (sharepoint) hashbang
+      console.warn("Route * " + ctx.path);
+      if (/^#%21/.test(ctx.path)) {
+        ctx.path = ctx.path.replace(/^#%21/, '')
+        console.warn("Route * (sanitized) " + ctx.path);
+        page.redirect(ctx.path);
+      } else {
+        next();
+      }
     });
 
     page('/', () => {
@@ -41,6 +49,7 @@
 
     // /browse/<path>@<action>
     page(/\/browse\/([\s\S]*)?/, (data) => {
+      console.warn("Browse to " + data.path);
       if (!data.state.contentView) {
         app.currentContentView = null;
       }
