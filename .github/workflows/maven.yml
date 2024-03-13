@@ -38,7 +38,7 @@ jobs:
         key: ${{ runner.os }}-m2-${{ hashFiles('**/pom.xml') }}
         restore-keys: ${{ runner.os }}-m2
     - name: Build with Maven
-      run: mvn -B package --file pom.xml
+      run: mvn -B package --file pom.xml -DskipDocker
     - name: Save artifact
       run: mkdir staging && cp fix-sharepoint-hashbang-package/target/fix-sharepoint-hashbang-package*.zip staging
     - name: Persist artifact  
