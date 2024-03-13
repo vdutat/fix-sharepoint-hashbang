@@ -32,6 +32,11 @@ if you don't want to build the **Docker** image, use:
 mvn clean install -DskipDocker
 ```
 
+# CI
+
+[![Java CI with Maven](https://github.com/vdutat/fix-sharepoint-hashbang/actions/workflows/maven.yml/badge.svg)](https://github.com/vdutat/fix-sharepoint-hashbang/actions/workflows/maven.yml)
+
+
 ## Installation
 
 ### Option 1 (using the Docker image)
